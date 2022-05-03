@@ -11,6 +11,12 @@
   <meta name="description" content="Run Python code in your HTML.">
   <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
   <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  <py-env>
+    - numpy
+    - pandas
+    - matplotlib
+    - sympy
+  </py-env>
   <style>
     .loading {
       display: inline-block;
@@ -30,59 +36,53 @@
       }
     }
   </style>
-  <py-env>
-    - numpy
-    - pandas
-    - matplotlib
-    - sympy
-  </py-env>
 </head>
 <body>
-  <div style="display: flex; flex-direction: column; gap: 1em; width: 600px">
-    <div id="mandelbrot">
-      <div style="text-align: center">Mandelbrot set</div>
-      <div>
-        <div class="loading"></div>
-        <canvas></canvas>
-      </div>
-    </div>
-    <div id="julia">
-      <div style="text-align: center">Julia set</div>
-      <div>
-        <div class="loading"></div>
-        <canvas></canvas>
-      </div>
-    </div>
-    <div id="newton">
-      <div style="text-align: center">Newton set</div>
-      <fieldset style="display: flex; flex-direction: row; gap: 1em">
-        <div><span style="white-space: pre">p(z) = </span><input id="poly" type="text" value="z**3 - 2*z + 2"></div>
-        <div><span style="white-space: pre">a = </span><input id="coef" type="text" value="1" style="width: 40px"></div>
-        <div style="display: flex; flex-direction: row">
-          <span style="white-space: pre">x = [</span>
-          <input id="x0" type="text" value="-2.5" style="width: 80px; text-align: right">
-          <span style="white-space: pre">, </span>
-          <input id="x1" type="text" value="2.5" style="width: 80px; text-align: right">
-          <span style="white-space: pre">]</span>
-        </div>
-        <div style="display: flex; flex-direction: row">
-          <span style="white-space: pre">y = [</span>
-          <input id="y0" type="text" value="-5.0" style="width: 80px; text-align: right">
-          <span style="white-space: pre">, </span>
-          <input id="y1" type="text" value="5.0" style="width: 80px; text-align: right">
-          <span style="white-space: pre">]</span>
-        </div>
-        <div style="display: flex; flex-direction: row; gap: 1em">
-          <div style="white-space: pre"><input type="radio" id="conv" name="type" value="convergence" checked> convergence</div>
-          <div style="white-space: pre"><input type="radio" id="iter" name="type" value="iterations"> iterations</div>
-        </div>
-      </fieldset>
-      <div>
-        <div class="loading"></div>
-        <canvas></canvas>
-      </div>
+<div style="display: flex; flex-direction: column; gap: 1em; width: 600px">
+  <div id="mandelbrot">
+    <div style="text-align: center">Mandelbrot set</div>
+    <div>
+      <div class="loading"></div>
+      <canvas></canvas>
     </div>
   </div>
+  <div id="julia">
+    <div style="text-align: center">Julia set</div>
+    <div>
+      <div class="loading"></div>
+      <canvas></canvas>
+    </div>
+  </div>
+  <div id="newton">
+    <div style="text-align: center">Newton set</div>
+    <fieldset style="display: flex; flex-direction: row; gap: 1em">
+      <div><span style="white-space: pre">p(z) = </span><input id="poly" type="text" value="z**3 - 2*z + 2"></div>
+      <div><span style="white-space: pre">a = </span><input id="coef" type="text" value="1" style="width: 40px"></div>
+      <div style="display: flex; flex-direction: row">
+        <span style="white-space: pre">x = [</span>
+        <input id="x0" type="text" value="-2.5" style="width: 80px; text-align: right">
+        <span style="white-space: pre">, </span>
+        <input id="x1" type="text" value="2.5" style="width: 80px; text-align: right">
+        <span style="white-space: pre">]</span>
+      </div>
+      <div style="display: flex; flex-direction: row">
+        <span style="white-space: pre">y = [</span>
+        <input id="y0" type="text" value="-5.0" style="width: 80px; text-align: right">
+        <span style="white-space: pre">, </span>
+        <input id="y1" type="text" value="5.0" style="width: 80px; text-align: right">
+        <span style="white-space: pre">]</span>
+      </div>
+      <div style="display: flex; flex-direction: row; gap: 1em">
+        <div style="white-space: pre"><input type="radio" id="conv" name="type" value="convergence" checked> convergence</div>
+        <div style="white-space: pre"><input type="radio" id="iter" name="type" value="iterations"> iterations</div>
+      </div>
+    </fieldset>
+    <div>
+      <div class="loading"></div>
+      <canvas></canvas>
+    </div>
+  </div>
+</div>
 <py-repl id="my-repl-1"  auto-generate="true">
 print('<br>'.join([' '.join(["%2s x%2s = %2s"%(j,i,i*j) for j in range(1,i+1)]) for i in range(1,10)]))
 </py-repl>
